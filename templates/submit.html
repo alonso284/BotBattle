@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!-- form to submit a file to submit /post -->
+<form action="/submit" method="post" enctype="multipart/form-data">
+	<!-- code file -->
+	<input type="file" name="code">
+	<!-- select langague -->
+	<select name="language">
+		<!-- <option value="c">C</option> -->
+		<!-- <option value="cpp">C++</option> -->
+		<!-- <option value="java">Java</option> -->
+		<option value="python">Python</option>
+	<input type="submit" value="Submit">
+</form>
+{% endblock %}
+
