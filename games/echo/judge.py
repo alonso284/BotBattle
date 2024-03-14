@@ -11,8 +11,9 @@ print(out1_str)
 import os
 import queue
 import docker
+import random
 
-def judge(socket_1, socket_2):
+def judge(socket_1, socket_2) -> bool:
     socket_1._sock.send(b'Hello world\n')
 
     turn = True
@@ -28,5 +29,9 @@ def judge(socket_1, socket_2):
         turn = not turn
 
         c -= 1
+
+    res = random.choice([True, False])
+    print(res)
+    return res
 
 

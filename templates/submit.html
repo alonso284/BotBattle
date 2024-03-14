@@ -4,13 +4,24 @@
 <!-- form to submit a file to submit /post -->
 <form action="/submit" method="post" enctype="multipart/form-data">
 	<!-- code file -->
-	<input type="file" name="code">
-	<!-- select langague -->
-	<select name="language">
+	<input type="file" name="code1">
+	<select name="language1">
 		<!-- <option value="c">C</option> -->
 		<option value="cpp">C++</option>
 		<!-- <option value="java">Java</option> -->
 		<option value="python">Python</option>
+	</select>
+
+	
+	<input type="file" name="code2">
+	<!-- select langague -->
+
+	<select name="language2">
+		<!-- <option value="c">C</option> -->
+		<option value="cpp">C++</option>
+		<!-- <option value="java">Java</option> -->
+		<option value="python">Python</option>
+	</select>
 	<input type="submit" value="Submit">
 </form>
 {% endblock %}
