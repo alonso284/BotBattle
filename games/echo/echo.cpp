@@ -8,7 +8,7 @@ int main() {
     std::string inp;
     while (true) {
         std::cin >> inp;
-        std::cout << "asdf" << inp << "NOTHING" << std::endl;
+        std::cout << "asdf" << inp << "NOTHING\n";
     }
     return 0;
 }

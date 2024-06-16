@@ -47,20 +47,27 @@ def battle(image1, image2) -> bool:
 
     # Attach to the container's stdin, stdout, and stderr
     print("Creating Sockets")
-    socket_1 = container1.attach_socket(params={'stdout': 1, 'stdin': 1,'stream': 1})
-    socket_2 = container2.attach_socket(params={'stdout': 1, 'stdin': 1,'stream': 1})
+    socket_1_in =  container1.attach_socket(params={'stdin':  1,'stream': 1})
+    socket_1_out = container1.attach_socket(params={'stdout': 1,'stream': 1})
+    socket_2_in =  container2.attach_socket(params={'stdin':  1,'stream': 1})
+    socket_2_out = container2.attach_socket(params={'stdout': 1,'stream': 1})
 
     # Set the sockets to non-blocking mode (optional, depending on your use case)
     print("Setting Sockets")
-    socket_1._sock.setblocking(True)
-    socket_2._sock.setblocking(True)
+    socket_1_in._sock.setblocking(True)
+    socket_1_out._sock.setblocking(True)
+    socket_2_in._sock.setblocking(True)
+    socket_2_out._sock.setblocking(True)
 
     # TODO START THE GAME
-    res = judge(socket_1, socket_2)
+    # res = judge(socket_1, socket_2)
+    res = judge((socket_1_in, socket_1_out), (socket_2_in, socket_2_out))
 
     # Close socket
-    socket_1.close()
-    socket_2.close()
+    socket_1_in.close()
+    socket_1_out.close()
+    socket_2_in.close()
+    socket_2_out.close()
 
     # # Cleanup
     # container1.stop()
@@ -71,8 +78,8 @@ def battle(image1, image2) -> bool:
     container2.stop(timeout=0)
 
     # Forcefully remove the container, which stops it if it's running
-    container1.remove(force=True)
-    container2.remove(force=True)
+    # container1.remove(force=True)
+    # container2.remove(force=True)
 
 
     # remove the container
@@ -81,7 +88,7 @@ def battle(image1, image2) -> bool:
     return res
 
 def interact(language1, language2, code1, code2) -> bool:
-    runs = 3
+    runs = 1
     socket_1_wins = 0
 
     # Build images from code

@@ -6,21 +6,19 @@
 	<!-- code file -->
 	<input type="file" name="code1">
 	<select name="language1">
-		<!-- <option value="c">C</option> -->
-		<option value="cpp">C++</option>
-		<!-- <option value="java">Java</option> -->
-		<option value="python">Python</option>
+		{% for key, value in languages.items() %}
+		<option value="{{ key }}">{{ value['display_name'] }}</option>
+		{% endfor %}
 	</select>
 
-	
+
 	<input type="file" name="code2">
 	<!-- select langague -->
 
 	<select name="language2">
-		<!-- <option value="c">C</option> -->
-		<option value="cpp">C++</option>
-		<!-- <option value="java">Java</option> -->
-		<option value="python">Python</option>
+		{% for key, value in languages.items() %}
+		<option value="{{ key }}">{{ value['display_name'] }}</option>
+		{% endfor %}
 	</select>
 	<input type="submit" value="Submit">
 </form>

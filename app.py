@@ -40,7 +40,7 @@ def index():
             return "Winner: " + ("A" if res else "B")
         return 'Error in upload'
     else:
-        return render_template('submit.html')
+        return render_template('submit.html', languages=LANGUAGES)
 
 if __name__ == '__main__':
     app.run(debug=True)
